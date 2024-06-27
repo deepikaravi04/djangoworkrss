@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}View Job Filter Terms{% endblock %}
+
+{% block content %}
+    <h1>Job Filter Terms</h1>
+    <ul>
+        {% for filter in filters %}
+            <li>
+                {{ filter.filter_term }}
+                <form action="{% url 'delete_job_filter_term' filter.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

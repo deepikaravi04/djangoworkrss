@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Website{% endblock %}</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* Dark background */
+            color: #ffffff; /* Light text */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .navbar {
+            background-color: #1f1f1f; /* Slightly lighter dark color */
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+        .navbar a:hover {
+            background-color: #333333; /* Darker hover effect */
+            border-radius: 5px;
+        }
+        .content {
+            flex: 1;
+            padding: 2rem;
+        }
+        .footer {
+            background-color: #1f1f1f; /* Match navbar background */
+            padding: 1rem;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Additional styles for job listings */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1f1f1f; /* Match navbar background */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-top: 30px;
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .messages {
+            margin-bottom: 20px;
+        }
+        .messages ul {
+            list-style: none;
+            padding: 0;
+        }
+        .messages li {
+            padding: 10px;
+            border: 1px solid #333333;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            background-color: #2c2c2c;
+        }
+        .job-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .job-item {
+            padding: 20px;
+            border: 1px solid #333333;
+            border-radius: 4px;
+            background-color: #2c2c2c;
+        }
+        .job-item h2 {
+            margin-top: 0;
+        }
+        .job-date {
+            color: #888;
+            font-size: 0.9em;
+        }
+        .job-summary {
+            margin: 10px 0;
+        }
+        .delete-button {
+            display: inline-block;
+            padding: 10px 15px;
+            color: #ffffff;
+            background-color: #e74c3c;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .delete-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Form Styles */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 10px;
+            border: 1px solid #333333;
+            border-radius: 4px;
+            background-color: #2c2c2c;
+            color: #ffffff;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #888;
+            outline: none;
+        }
+        .field-group {
+            margin-bottom: 15px;
+        }
+        .error {
+            color: #e74c3c;
+            margin-top: 5px;
+        }
+        .btn-submit {
+            padding: 10px 20px;
+            color: #ffffff;
+            background-color: #28a745;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-submit:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <a href="{% url 'home_feeder' %}">Logo</a>
+        </div>
+        <div class="nav-links">
+            <a href="{% url 'home_feeder' %}">Home</a>
+            <a href="{% url 'display_jobs' %}">Display Jobs</a>
+            <a href="{% url 'add_rss_feed_link' %}">Add RSS Feed Link</a>
+            <a href="{% url 'view_rss_feed_links' %}">View RSS Feed Links</a>
+            <a href="{% url 'add_job_filter_term' %}">Add Job Filter Term</a>
+            <a href="{% url 'view_job_filter_terms' %}">View Job Filter Terms</a>
+        </div>
+    </div>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Your Company. All rights reserved.</p>
+    </div>
+</body>
+</html>

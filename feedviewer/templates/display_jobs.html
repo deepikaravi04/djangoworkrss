@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Job Listings{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Job Listings</h1>
+    
+    {% if messages %}
+        <div class="messages">
+            <ul>
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    
+    <div class="job-list">
+        {% for job in jobs %}
+            <div class="job-item">
+                <h2>{{ job.job_title }}</h2>
+                <p class="job-date">{{ job.job_published }}</p>
+                <p class="job-summary">{{ job.job_summary }}</p>
+                <a href="{% url 'delete_job' job.id %}" class="delete-button" onclick="return confirm('Are you sure you want to delete this job?');">Delete</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
